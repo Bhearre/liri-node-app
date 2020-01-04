@@ -4,14 +4,13 @@ var axios = require('axios');
 var Table = require('cli-table');
 var keys = require("./keys.js");
 var fs = require('fs');
-var execSync = require("child_process").execSync;
 
 var commandsMap = {
     // command  -------> What to do
     'spotify-this-song': searchSpotify,
     'concert-this': searchBandsInTown,
-    'movie-this': searchIMDB,
-    'do-what-it-says': doRandom
+    'movie-this': searchIMDB
+    // 'do-what-it-says': doRandom
 }
 
 var command = (process.argv[2] || '').toLowerCase()
@@ -270,7 +269,9 @@ function searchIMDB(movieName) {
             // console.log('movie name is', movieName)
 
 
-            
+            // function doRandom {
+            //         console.log('gonna do the random thing')
+
   
 //closes searchIMDB function
 
@@ -295,40 +296,8 @@ function searchIMDB(movieName) {
 
         // }) //closes then function
 
-function doRandom() {
-    
-    console.log('gonna do the random thing');
-    var command;
-    fs.readFile('./random.txt', 'utf8', function(err, contents) {
-        console.log(contents);
-        var args = contents.split(",");
-        command = "node liri.js " + args[0] + " " + args[1];
-        console.log(command);
 
-       
-        
-        
-
-    });
-    // execSync(command);
-    console.log('after calling readFile');
-
-
-}
-
-
-    // fs.readFile('/random.txt', 'utf8');
-    
-    //     if (err) {
-    //       console.error(err)
-    //       return
-    //     }
-
-    //     console.log(data)
-    // };   
-                
-    //     // fs.readFileSync('./random.txt', (err, data) => {
-    //     //     if (err) throw err;
-    //     //     console.log("we are in the read file" + data);
-    //     //   });
-    
+        fs.readFile('/etc/passwd', (err, data) => {
+            if (err) throw err;
+            console.log(data);
+          });
