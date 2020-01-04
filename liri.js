@@ -151,45 +151,45 @@ function searchBandsInTown(bandName) {
 function searchIMDB(movieName) {
   
   
-    var searchTable = new Table({
-        head: ['Title', 'Year']
-    });
+    // var searchTable = new Table({
+    //     head: ['Title', 'Year']
+    // });
 
     var titleTable = new Table({
         head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
     });
   
-    var url = "http://www.omdbapi.com/?s=" + movieName + "&apikey=e4179ba0&page=1&type=movie&Content-Type=application/json";
-    axios.get(url)
-        .then(function (response) {
-            var searchMe = response.data.Search;
-            //console.log("length of search " + searchMe.length);
+    // var url = "http://www.omdbapi.com/?s=" + movieName + "&apikey=e4179ba0&page=1&type=movie&Content-Type=application/json";
+    // axios.get(url)
+    //     .then(function (response) {
+    //         var searchMe = response.data.Search;
+    //         //console.log("length of search " + searchMe.length);
            
-            for (var i = 0; i < searchMe.length; i++) {
-                searchTable.push(
-                    [
-                        searchMe[i].Title,
-                        searchMe[i].Year                   
-                    ]
-                )
-            } //closes for loop
+    //         for (var i = 0; i < searchMe.length; i++) {
+    //             searchTable.push(
+    //                 [
+    //                     searchMe[i].Title,
+    //                     searchMe[i].Year                   
+    //                 ]
+    //             )
+    //         } //closes for loop
             
-            console.log(searchTable.toString());
-            //fs.writeFileSync('./searchIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
+    //         console.log(searchTable.toString());
+    //         //fs.writeFileSync('./searchIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
 
        
 
-        //search individual titles
+    //     //search individual titles
 
-       // console.log("this is searchTable " + searchTable);
+    //    // console.log("this is searchTable " + searchTable);
 
-        for (var k = 0; k < searchMe.length; k++) {
+    //     for (var k = 0; k < searchMe.length; k++) {
 
-            var searchTitle = searchMe[k].Title;
+          //  var searchTitle = searchMe[k].Title;
             //var searchTitle = searchTable[k].Title;
             //console.log("this is searchTitle " + searchTitle);
 
-            var url = "http://www.omdbapi.com/?t=" + searchTitle + "&apikey=e4179ba0";
+            var url = "http://www.omdbapi.com/?t=" + movieName + "&apikey=e4179ba0";
             axios.get(url)
             .then(function (response) {
                 var thisTitle = response.data;
@@ -205,21 +205,21 @@ function searchIMDB(movieName) {
                     thisTitle.Actors                  
                 ] )
                
-                //console.log(titleTable.toString());    this works but provides a cumulative table
+                console.log(titleTable.toString());    //this works but provides a cumulative table
 
             }) //closes then function in search each title
 
-            console.log(titleTable.toString());
+            //console.log(titleTable.toString());
 
                 //fs.writeFileSync('./titleIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
 
-        } //closes for loop
+        //} //closes for loop
 
         //console.log(titleTable.toString());
        //console.log("this is titleTable " + titleTable[1]);
 
 
-    }) //closes search then function
+   // }) //closes search then function
     //console.log("this is titleTable 2" + titleTable);
 
 } 
