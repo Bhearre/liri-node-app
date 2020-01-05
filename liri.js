@@ -4,6 +4,7 @@ var axios = require('axios');
 var Table = require('cli-table');
 var keys = require("./keys.js");
 var fs = require('fs');
+var moment = require("moment");
 var execSync = require("child_process").execSync;
 
 var commandsMap = {
@@ -134,7 +135,7 @@ function searchBandsInTown(bandName) {
 
 // var movieName = " ";
 
-//     for (i=2; i < nodeArgs.length; i++) {
+//     for (i=3; i < nodeArgs.length; i++) {
 
 //     movieName = movieName + " " + nodeArgs[i];
 //     }
@@ -189,6 +190,7 @@ function searchIMDB(movieName) {
     //var searchTitle = searchTable[k].Title;
     //console.log("this is searchTitle " + searchTitle);
 
+
     var url = "http://www.omdbapi.com/?t=" + movieName + "&apikey=e4179ba0";
     axios.get(url)
         .then(function (response) {
@@ -224,9 +226,7 @@ function searchIMDB(movieName) {
 
 }
 
-
 // ===========================Function to search a single movie title by movie name  ===================================
-
 //  var url = "http://www.omdbapi.com/?t=" + movieName + "&apikey=e4179ba0";
 //  axios.get(url)
 //  .then(function (response) {
@@ -248,8 +248,6 @@ function searchIMDB(movieName) {
 //         titles.Actors                  
 //         ]
 //    )
-
-
 //    console.log(titleTable.toString());
 
 // for (var i = 0; i < searchMe.length; i++) {
@@ -262,10 +260,12 @@ function searchIMDB(movieName) {
 
 
 //console.log(table);
-//      Code below uses the node file system to create a .json file with the output from a movie title search fomr the IMDB title search endpoint.
+
+//     Write File Sync
+//      Code below set off by *** ***uses the node file system to create a .json file with the output from a movie title search fomr the IMDB title search endpoint.
 //      This is one of two alternative searches available at OMDB one which searches for up to ten movies based on the search term provided as the the fourth argument 
 //        given and will either use the first word of the argument or the entire string if the search term is put into quotes ("")
-//      fs.writeFileSync('./titleIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
+//    ***  fs.writeFileSync('./titleIMDB.json', JSON.stringify(response.data, null, 2), 'utf8'); ***
 
 // ===================================    End of Function for Singe Movie Search  ========================================
 
@@ -303,15 +303,29 @@ function doRandom() {
     fs.readFile('./random.txt', 'utf8', function (err, contents) {
         console.log(contents);
         var args = contents.split(",");
-        command = "node liri.js " + args[0] + " " + args[1];
-        console.log(command);
+        // command = "node liri.js " + args[0] + " " + args[1];
+        // console.log(command);
+        command = args[0];
+        var query = args[1];
+        // searchSpotify(songName);
+        // console.log(songName);
 
-
-
-
-
+        switch (command) {
+                case 'spotify-this-song':
+                    searchSpotify(query)
+                    break;
+                case 'concert-this':
+                    searchBandsInTown(query)
+                    break;
+                case 'movie-this':
+                    searchIMDB(query)
+                    break;
+               
+            }
+            
     });
-    // execSync(command);
+   
+
     console.log('after calling readFile');
 
 
