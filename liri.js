@@ -200,7 +200,7 @@ function searchIMDB(movieName) {
                 thisTitle.Title,
                 thisTitle.Year,
                 thisTitle.imdbRating,
-                'NA',
+                thisTitle.Ratings[1].Value,
                 thisTitle.Country,
                 thisTitle.Language,
                 thisTitle.Plot,
@@ -330,20 +330,4 @@ function doRandom() {
 
 
 }
-
-
-    // fs.readFile('/random.txt', 'utf8');
-
-    //     if (err) {
-    //       console.error(err)
-    //       return
-    //     }
-
-    //     console.log(data)
-    // };   
-
-    //     // fs.readFileSync('./random.txt', (err, data) => {
-    //     //     if (err) throw err;
-    //     //     console.log("we are in the read file" + data);
-    //     //   });
-
+   
