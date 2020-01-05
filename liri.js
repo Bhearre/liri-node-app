@@ -149,8 +149,8 @@ function searchBandsInTown(bandName) {
 
 
 function searchIMDB(movieName) {
-  
-  
+
+
     // var searchTable = new Table({
     //     head: ['Title', 'Year']
     // });
@@ -158,13 +158,13 @@ function searchIMDB(movieName) {
     var titleTable = new Table({
         head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
     });
-  
+
     // var url = "http://www.omdbapi.com/?s=" + movieName + "&apikey=e4179ba0&page=1&type=movie&Content-Type=application/json";
     // axios.get(url)
     //     .then(function (response) {
     //         var searchMe = response.data.Search;
     //         //console.log("length of search " + searchMe.length);
-           
+
     //         for (var i = 0; i < searchMe.length; i++) {
     //             searchTable.push(
     //                 [
@@ -173,11 +173,11 @@ function searchIMDB(movieName) {
     //                 ]
     //             )
     //         } //closes for loop
-            
+
     //         console.log(searchTable.toString());
     //         //fs.writeFileSync('./searchIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
 
-       
+
 
     //     //search individual titles
 
@@ -185,129 +185,130 @@ function searchIMDB(movieName) {
 
     //     for (var k = 0; k < searchMe.length; k++) {
 
-          //  var searchTitle = searchMe[k].Title;
-            //var searchTitle = searchTable[k].Title;
-            //console.log("this is searchTitle " + searchTitle);
+    //  var searchTitle = searchMe[k].Title;
+    //var searchTitle = searchTable[k].Title;
+    //console.log("this is searchTitle " + searchTitle);
 
-            var url = "http://www.omdbapi.com/?t=" + movieName + "&apikey=e4179ba0";
-            axios.get(url)
-            .then(function (response) {
-                var thisTitle = response.data;
-                //console.log("this is in the title search " + thisTitle.Title + " " + thisTitle.imdbRating);
-                titleTable.push ( [
-                    thisTitle.Title,
-                    thisTitle.Year,
-                    thisTitle.imdbRating,
-                    'NA',
-                    thisTitle.Country,
-                    thisTitle.Language,
-                    thisTitle.Plot,
-                    thisTitle.Actors                  
-                ] )
-               
-                console.log(titleTable.toString());    //this works but provides a cumulative table
+    var url = "http://www.omdbapi.com/?t=" + movieName + "&apikey=e4179ba0";
+    axios.get(url)
+        .then(function (response) {
+            var thisTitle = response.data;
+            //console.log("this is in the title search " + thisTitle.Title + " " + thisTitle.imdbRating);
+            titleTable.push([
+                thisTitle.Title,
+                thisTitle.Year,
+                thisTitle.imdbRating,
+                'NA',
+                thisTitle.Country,
+                thisTitle.Language,
+                thisTitle.Plot,
+                thisTitle.Actors
+            ])
 
-            }) //closes then function in search each title
+            console.log(titleTable.toString());    //this works but provides a cumulative table
 
-            //console.log(titleTable.toString());
+        }) //closes then function in search each title
 
-                //fs.writeFileSync('./titleIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
+    //console.log(titleTable.toString());
 
-        //} //closes for loop
+    //fs.writeFileSync('./titleIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
 
-        //console.log(titleTable.toString());
-       //console.log("this is titleTable " + titleTable[1]);
+    //} //closes for loop
+
+    //console.log(titleTable.toString());
+    //console.log("this is titleTable " + titleTable[1]);
 
 
-   // }) //closes search then function
+    // }) //closes search then function
     //console.log("this is titleTable 2" + titleTable);
 
-} 
+}
 
 
 // ===========================Function to search a single movie title by movie name  ===================================
 
-            //  var url = "http://www.omdbapi.com/?t=" + movieName + "&apikey=e4179ba0";
-            //  axios.get(url)
-            //  .then(function (response) {
-            //     var titles = response.data;
-     
-            //     var titleTable = new Table({
-            //         head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
-            //     });
-            //         titleTable.push(
-            //        [
-            //         titles.Title,
-            //         titles.Year,
-            //         titles.imdbRating,
+//  var url = "http://www.omdbapi.com/?t=" + movieName + "&apikey=e4179ba0";
+//  axios.get(url)
+//  .then(function (response) {
+//     var titles = response.data;
 
-            //     'NA',
-            //         titles.Country,
-            //         titles.Language,
-            //         titles.Plot,
-            //         titles.Actors                  
-            //         ]
-            //    )
+//     var titleTable = new Table({
+//         head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
+//     });
+//         titleTable.push(
+//        [
+//         titles.Title,
+//         titles.Year,
+//         titles.imdbRating,
 
-
-            //    console.log(titleTable.toString());
-
-            // for (var i = 0; i < searchMe.length; i++) {
-            //     titles.push(searchMe[i].Title);
-            //     titles.push(searchMe[i].Year);
-            //     titles.push(searchMe[i].imdbRating);
-            //     titles.push(searchMe[i].Country);
-            //     titles.push(searchMe[i].Language);
-            //     titles.push(searchMe[i].Plot);                  
+//     'NA',
+//         titles.Country,
+//         titles.Language,
+//         titles.Plot,
+//         titles.Actors                  
+//         ]
+//    )
 
 
-            //console.log(table);
+//    console.log(titleTable.toString());
 
-            //fs.writeFileSync('./titleIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
+// for (var i = 0; i < searchMe.length; i++) {
+//     titles.push(searchMe[i].Title);
+//     titles.push(searchMe[i].Year);
+//     titles.push(searchMe[i].imdbRating);
+//     titles.push(searchMe[i].Country);
+//     titles.push(searchMe[i].Language);
+//     titles.push(searchMe[i].Plot);                  
+
+
+//console.log(table);
+//      Code below uses the node file system to create a .json file with the output from a movie title search fomr the IMDB title search endpoint.
+//      This is one of two alternative searches available at OMDB one which searches for up to ten movies based on the search term provided as the the fourth argument 
+//        given and will either use the first word of the argument or the entire string if the search term is put into quotes ("")
+//      fs.writeFileSync('./titleIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
 
 // ===================================    End of Function for Singe Movie Search  ========================================
-            
-            // console.log('movie name is', movieName)
 
+// console.log('movie name is', movieName)
 
-            
-  
 //closes searchIMDB function
 
-          // if (titles.length === 0) {
-            //     return searchSpotify('The Sign, Ace of Base');
-            // }
-    //search for up to 10 titles
-        //      var searchTable = new Table({
-        //          head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
-        //      });
+// if (titles.length === 0) {
+//     return searchSpotify('The Sign, Ace of Base');
+// }
+//search for up to 10 titles
+//      var searchTable = new Table({
+//          head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
+//      });
 
-        //      for (var i = 0; i < searchMe.length; i++) {
-        //             searchTable.push(
-        //            [
-        //             searchMe[i].Title,
-        //             searchMe[i].Year,                   
-        //             ]
-        //        )
-        //     }
-        //     console.log(searchTable.toString());
-        //     fs.writeFileSync('./searchIMDB.json', JSON.stringify(response.data, null, 2), 'utf8')
+//      for (var i = 0; i < searchMe.length; i++) {
+//             searchTable.push(
+//            [
+//             searchMe[i].Title,
+//             searchMe[i].Year,                   
+//             ]
+//        )
+//     }
+//     console.log(searchTable.toString());
+//     fs.writeFileSync('./searchIMDB.json', JSON.stringify(response.data, null, 2), 'utf8')
 
-        // }) //closes then function
+// }) //closes then function
 
+// Liri Bot fourth API Call Function to read the file random.txt and do what it says.  Presently the function works to return the 
+// parameters of the random.txt file to the terminal but the functionality for running at the command line automagically is not yet in place.
 function doRandom() {
-    
+
     console.log('gonna do the random thing');
     var command;
-    fs.readFile('./random.txt', 'utf8', function(err, contents) {
+    fs.readFile('./random.txt', 'utf8', function (err, contents) {
         console.log(contents);
         var args = contents.split(",");
         command = "node liri.js " + args[0] + " " + args[1];
         console.log(command);
 
-       
-        
-        
+
+
+
 
     });
     // execSync(command);
@@ -318,7 +319,7 @@ function doRandom() {
 
 
     // fs.readFile('/random.txt', 'utf8');
-    
+
     //     if (err) {
     //       console.error(err)
     //       return
@@ -326,9 +327,9 @@ function doRandom() {
 
     //     console.log(data)
     // };   
-                
+
     //     // fs.readFileSync('./random.txt', (err, data) => {
     //     //     if (err) throw err;
     //     //     console.log("we are in the read file" + data);
     //     //   });
-    
+
