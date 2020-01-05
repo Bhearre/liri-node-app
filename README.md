@@ -33,7 +33,7 @@ Liri.js lets the user give the app commands to get information.  These commands 
 
 ## Command Syntax for Use:
 
-Commands take four arguments as follows without the parenthesis or number:  1.(Node) 2.(liri.js) 3.`(command-from-list-below)` 4.(the name of the band, song or movie of interest). ***Note: Quotations Marks should be used for item 4! ***  
+Commands take four arguments as follows without the parenthesis or number:  1.(Node) 2.(liri.js) 3.`(command-from-list-below)` 4.(the name of the band, song or movie of interest). ***Note: Quotations Marks should ___NOT___ be used for item 4! ***  
 
    1. `concert-this` 
 
@@ -46,10 +46,12 @@ Commands take four arguments as follows without the parenthesis or number:  1.(N
 The command `do-what-it-says` reads from a file called random.txt and runs the file contents at the command line. 
 
 ## The Inner Working of the Application (Simplified)
+
 The application then makes an AJAX call to the appropriate API and returns a response to the terminal.
 
 ## The Developer's Role in the Application:
-My role in developing this application was to take the instructions provided and build out file structure which included the following files:
+
+My role in developing this application was to take the instructions provided and build out file structure; to secure the API credentials needed to access the information; to write and test the code to provide the applications functionality and to prepare this markdown file to provide the user with instructions.
 
 ## The Resources Used to Deliver Results
 
