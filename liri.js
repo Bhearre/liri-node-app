@@ -25,35 +25,7 @@ if (!commandsMap[command]) {
 
 commandsMap[command](query)
 
-// ------------------ The more straight forward way ---------------------
 
-// var validCommands = ['spotify-this-song', 'concert-this', 'movie-this', 'do-what-it-says']
-// if (!validCommands.includes(command)) {
-//     console.error('Sorry, ' + command + ' is not a valid command')
-//     process.exit(1)
-// }
-
-// switch (command) {
-//     case 'spotify-this-song':
-//         searchSpotify(query)
-//         break;
-//     case 'concert-this':
-//         searchBandsInTown(query)
-//         break;
-//     case 'movie-this':
-//         searchOMDB(query)
-//         break;
-//     case 'do-what-it-says':
-//         doRandom()
-//         break;
-// }
-
-
-// ------------------ END - The more straight forward way - END ---------------------
-// Artist Name
-// Song Name
-// Preview link of song
-// Album name
 
 function searchSpotify(songName) {
     var spotify = new Spotify(keys.spotify);
@@ -77,10 +49,7 @@ function searchSpotify(songName) {
             var item = items[i] // Current Item we're working with
             var previewURL = item.preview_url
             if (!previewURL) previewURL = 'N/A'
-            // var artistNames = item.artists
-            //     .map(artist => artist.name)
-            //     .filter(artistName => artistName !== 'Doug')
-            //     .join(', ')
+           
             var artistNames = []
             for (var j = 0; j < item.artists.length; j++) {
                 artistNames.push(item.artists[j].name);
@@ -112,16 +81,16 @@ function searchBandsInTown(bandName) {
                 var location = event.venue.city
                 if (event.venue.region) location = location + " " + event.venue.region
                 if (event.venue.country) location = location + ", " + event.venue.country
+                var startTime = moment(event.datetime).format('MM/DD/YYYY');
                 table.push(
                     [
                         event.venue.name,
                         location,
-                        (new Date(event.datetime)).toLocaleDateString()
+                        startTime
                     ]
                 );
             }
             console.log(table.toString());
-            // console.log(JSON.stringify(response.data, null, 4));
         })
         .catch(function (error) {
             console.log(error);
@@ -129,26 +98,10 @@ function searchBandsInTown(bandName) {
 }
 
 
-// ======================= Draft for loop to concatenate the individual words in a multi word movie name=====================
-
-// var nodeArgs = process.argv;
-
-// var movieName = " ";
-
-//     for (i=3; i < nodeArgs.length; i++) {
-
-//     movieName = movieName + " " + nodeArgs[i];
-//     }
-// console.log(movieName);
-// ======================================================================================================================
 
 
 function searchIMDB(movieName) {
 
-
-    // var searchTable = new Table({
-    //     head: ['Title', 'Year']
-    // });
 
     var titleTable = new Table({
         head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
@@ -203,87 +156,10 @@ function searchIMDB(movieName) {
 
         }) //closes then function in search each title
 
-    //console.log(titleTable.toString());
-
-    //fs.writeFileSync('./titleIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
-
-    //} //closes for loop
-
-    //console.log(titleTable.toString());
-    //console.log("this is titleTable " + titleTable[1]);
-
-    // }) //closes search then function
-    //console.log("this is titleTable 2" + titleTable);
 
 }
 
-// ===========================Function to search a single movie title by movie name  ===================================
-//  var url = "http://www.omdbapi.com/?t=" + movieName + "&apikey=e4179ba0";
-//  axios.get(url)
-//  .then(function (response) {
-//     var titles = response.data;
 
-//     var titleTable = new Table({
-//         head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
-//     });
-//         titleTable.push(
-//        [
-//         titles.Title,
-//         titles.Year,
-//         titles.imdbRating,
-
-//     'NA',
-//         titles.Country,
-//         titles.Language,
-//         titles.Plot,
-//         titles.Actors                  
-//         ]
-//    )
-//    console.log(titleTable.toString());
-
-// for (var i = 0; i < searchMe.length; i++) {
-//     titles.push(searchMe[i].Title);
-//     titles.push(searchMe[i].Year);
-//     titles.push(searchMe[i].imdbRating);
-//     titles.push(searchMe[i].Country);
-//     titles.push(searchMe[i].Language);
-//     titles.push(searchMe[i].Plot);                  
-
-
-//console.log(table);
-
-//     Write File Sync
-//      Code below set off by *** ***uses the node file system to create a .json file with the output from a movie title search fomr the IMDB title search endpoint.
-//      This is one of two alternative searches available at OMDB one which searches for up to ten movies based on the search term provided as the the fourth argument 
-//        given and will either use the first word of the argument or the entire string if the search term is put into quotes ("")
-//    ***  fs.writeFileSync('./titleIMDB.json', JSON.stringify(response.data, null, 2), 'utf8'); ***
-
-// ===================================    End of Function for Singe Movie Search  ========================================
-
-// console.log('movie name is', movieName)
-
-//closes searchIMDB function
-
-// if (titles.length === 0) {
-//     return searchSpotify('The Sign, Ace of Base');
-// }
-//search for up to 10 titles
-//      var searchTable = new Table({
-//          head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
-//      });
-
-//      for (var i = 0; i < searchMe.length; i++) {
-//             searchTable.push(
-//            [
-//             searchMe[i].Title,
-//             searchMe[i].Year,                   
-//             ]
-//        )
-//     }
-//     console.log(searchTable.toString());
-//     fs.writeFileSync('./searchIMDB.json', JSON.stringify(response.data, null, 2), 'utf8')
-
-// }) //closes then function
 
 // Liri Bot fourth API Call Function to read the file random.txt and do what it says.  Presently the function works to return the 
 // parameters of the random.txt file to the terminal but the functionality for running at the command line automagically is not yet in place.
@@ -294,12 +170,8 @@ function doRandom() {
     fs.readFile('./random.txt', 'utf8', function (err, contents) {
         console.log(contents);
         var args = contents.split(",");
-        // command = "node liri.js " + args[0] + " " + args[1];
-        // console.log(command);
         command = args[0];
         var query = args[1];
-        // searchSpotify(songName);
-        // console.log(songName);
 
         switch (command) {
                 case 'spotify-this-song':

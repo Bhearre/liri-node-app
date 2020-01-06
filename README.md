@@ -14,7 +14,6 @@ The application technologies include the following:
 *   Javascript
 *   Node.js
 *   Node Package Manager (NPM)
-*   Inquirer Package from NPM
 *   Axios Package from NPM
 
 In addition to the above, the additional technologies include:
