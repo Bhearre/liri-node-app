@@ -121,7 +121,7 @@ function searchBandsInTown(bandName) {
                 );
             }
             console.log(table.toString());
-            console.log(JSON.stringify(response.data, null, 4));
+            // console.log(JSON.stringify(response.data, null, 4));
         })
         .catch(function (error) {
             console.log(error);
@@ -143,12 +143,6 @@ function searchBandsInTown(bandName) {
 // ======================================================================================================================
 
 
-
-
-
-
-
-
 function searchIMDB(movieName) {
 
 
@@ -159,7 +153,7 @@ function searchIMDB(movieName) {
     var titleTable = new Table({
         head: ['Title', 'Year', 'IMDB Rating', "Rotten Tomatoes Rating", 'Country', 'Language', 'Plot', 'Actors']
     });
-
+// ===============================  Code Below Will Use the "Search" Endpoint of the OMDB API and return 10 results. ===========
     // var url = "http://www.omdbapi.com/?s=" + movieName + "&apikey=e4179ba0&page=1&type=movie&Content-Type=application/json";
     // axios.get(url)
     //     .then(function (response) {
@@ -178,8 +172,6 @@ function searchIMDB(movieName) {
     //         console.log(searchTable.toString());
     //         //fs.writeFileSync('./searchIMDB.json', JSON.stringify(response.data, null, 2), 'utf8');
 
-
-
     //     //search individual titles
 
     //    // console.log("this is searchTable " + searchTable);
@@ -189,7 +181,7 @@ function searchIMDB(movieName) {
     //  var searchTitle = searchMe[k].Title;
     //var searchTitle = searchTable[k].Title;
     //console.log("this is searchTitle " + searchTitle);
-
+// ========================================End code to Search for Multiple titles ======================================
 
     var url = "http://www.omdbapi.com/?t=" + movieName + "&apikey=e4179ba0";
     axios.get(url)
@@ -219,7 +211,6 @@ function searchIMDB(movieName) {
 
     //console.log(titleTable.toString());
     //console.log("this is titleTable " + titleTable[1]);
-
 
     // }) //closes search then function
     //console.log("this is titleTable 2" + titleTable);
