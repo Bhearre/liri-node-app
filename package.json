@@ -4,7 +4,7 @@
   "description": "The *liri-node-app* is a command line interface application that utilizes node to take user input at the terminal command line and returns the information requested to the user also in the command line.",
   "main": "liri.js",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "cli-table": "^0.3.1",
     "dotenv": "^8.2.0",
     "moment": "^2.24.0",
