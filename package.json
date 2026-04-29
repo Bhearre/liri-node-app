@@ -10,9 +10,28 @@
     "moment": "^2.29.4",
     "node-spotify-api": "^1.1.1",
     "table": "^5.4.6"
+    "axios": "^1.6.0",
+    "cli-table3": "^0.6.3",
+    "dotenv": "^16.3.1",
+    "date-fns": "^2.30.0",
+    "spotify-web-api-node": "^5.0.2",
+    "table": "^6.8.1"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node liri.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bhearre/liri-node-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bhearre/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/Bhearre/liri-node-app#readme"
+}
     "start": "node liri.js"
   },
   "repository": {
